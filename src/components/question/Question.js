@@ -25,12 +25,11 @@ class Question extends Component {
     async fetchData() {
         let data = await fetchQuestion(this.props.category, this.props.difficulty);
         this.setState({
-            question: data.data.results[0],
+            question: data,
         })
     }
 
     render() {
-
         // If data is null
         // Display Spinner
         if (this.state.question == null) {
@@ -39,7 +38,6 @@ class Question extends Component {
 
         return (
             <Fragment>
-                {console.log(this.state.question)}
                 {this.state.question.question}
                 <Button onClick={() => this.fetchData()}>Next Question</Button>
             </Fragment>

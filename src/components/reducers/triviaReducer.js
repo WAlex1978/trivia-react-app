@@ -2,7 +2,7 @@ import Categories from '../assets/Categories';
 
 const initState = {
     categories: Categories,
-    category: 9,
+    category: null,
     difficulty: 'easy',
 }
 

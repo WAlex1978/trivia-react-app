@@ -2,8 +2,11 @@ import axios from 'axios';
 
 async function fetchQuestion(category, difficulty) {
     try {
+
         // Fetch trivia question from API
-        const question = await axios.get(`https://opentdb.com/api.php?amount=1&category=${category}&difficulty=${difficulty}`);
+        // If category is null then fetch any
+        let question = await axios.get("https://opentdb.com/api.php?amount=1" +
+        (category===null ? '' : ("category=" + category)) + "&difficulty=" + difficulty);
 
         // If trivia question could not be fetched
         // Throw error with response code
@@ -12,6 +15,9 @@ async function fetchQuestion(category, difficulty) {
         }
 
         // If trivia question has been fetched
+        // Parse data and replace 
+        question = JSON.stringify(question.data.results[0]);
+        question = JSON.parse(question.replace(/&quot;/g,"'").replace(/&#039;/g,"'"));
         return question;
     }
 
