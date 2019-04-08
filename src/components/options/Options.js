@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import SelectCategory from './SelectCategory';
 import SelectDifficulty from './SelectDifficulty';
-import fetchQuestion from '../actions/fetchQuestion';
 
 const mapStateToProps = (state) => {
     return {
