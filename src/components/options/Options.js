@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import SelectCategory from './SelectCategory';
+
 const mapStateToProps = (state) => {
     return {
         categories: state.categories,
@@ -14,7 +16,7 @@ class Options extends Component {
     render() { 
         return (  
             <div>
-                Hi {this.props.category}
+                <SelectCategory options={this.props.categories} />
             </div>
         );
     }
