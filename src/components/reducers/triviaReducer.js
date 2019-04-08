@@ -3,7 +3,7 @@ import Categories from '../assets/Categories';
 const initState = {
     categories: Categories,
     category: 9,
-    difficulty: '',
+    difficulty: 'easy',
 }
 
 const triviaReducer = (state = initState, action) => {
@@ -11,7 +11,13 @@ const triviaReducer = (state = initState, action) => {
         case 'SELECT_CATEGORY':
             return {
                 ...state,
-                category: action.category,
+                category: action.id,
+            }
+
+        case 'SELECT_DIFFICULTY':
+            return {
+                ...state,
+                difficulty: action.dif,
             }
 
         default:

@@ -1,6 +1,13 @@
-export const selectCategory = (category) => {
+export const selectCategory = (id) => {
     return {
         type: 'SELECT_CATEGORY',
-        category
+        id,
+    }
+}
+
+export const selectDifficulty = (dif) => {
+    return {
+        type: 'SELECT_DIFFICULTY',
+        dif,
     }
 }

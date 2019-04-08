@@ -10,12 +10,14 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return{
-      selectCategory: (category) => {dispatch(selectCategory(category))}
+  return {
+      selectCategory: (id) => {dispatch(selectCategory(id))}
   }
 }
 
 class SelectCategory extends Component {
+
+  // Updates state category to selected category id
   selectCategory = e => {
     this.props.selectCategory(e.target.value);
   }
@@ -25,9 +27,8 @@ class SelectCategory extends Component {
       <Fragment>
         Category:
 
-        {/* Form Select Box */}
-        {/* Loops through state categories for options */}
-        {/* Calls selectCategory on change */}
+        {/* Form Select Box, loops through state categories for options */}
+        {/* Calls selectCategory on change, provides option id as parameter */}
 
         <FormSelect onChange={this.selectCategory}>
           {this.props.categories.map(categories => (
