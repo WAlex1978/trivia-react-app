@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { Button } from 'shards-react';
 import fetchQuestion from '../actions/fetchQuestion';
 import Spinner from '../assets/Spinner';
 
@@ -15,12 +16,16 @@ class Question extends Component {
         question: null,
     }
 
+    componentWillMount() {
+        this.fetchData();
+    }
+
     // Sends request to API to fetch question
     // Provides state category and difficulty as parameters
     async fetchData() {
         let data = await fetchQuestion(this.props.category, this.props.difficulty);
         this.setState({
-            question: data,
+            question: data.data.results[0],
         })
     }
 
@@ -34,8 +39,9 @@ class Question extends Component {
 
         return (
             <Fragment>
-                
-
+                {console.log(this.state.question)}
+                {this.state.question.question}
+                <Button onClick={() => this.fetchData()}>Next Question</Button>
             </Fragment>
         );
     }

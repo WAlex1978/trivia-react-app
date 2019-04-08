@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import SelectCategory from './SelectCategory';
@@ -16,10 +16,10 @@ const mapStateToProps = (state) => {
 class Options extends Component {
     render() { 
         return (  
-            <div>
+            <Fragment>
                 <SelectCategory/>
                 <SelectDifficulty/>
-            </div>
+            </Fragment>
         );
     }
 }
