@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Text = styled.div`
     color: #fff;
-    font-size: 1.6em;
+    font-size: ${props => props.size ? (props.size) : "1.4em"};
     text-align: center;
     margin: auto;
 `

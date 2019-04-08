@@ -14,7 +14,7 @@ function Spinner(props) {
 
   return (
     <div>
-      <CircularProgress className={classes.progress} />
+      <CircularProgress className={classes.progress}/>
     </div>
   );
 }

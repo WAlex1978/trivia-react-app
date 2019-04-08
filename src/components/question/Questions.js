@@ -22,6 +22,9 @@ const cardStyle = {
     padding: "20px",
 }
 
+// Array to hold multiple choice questions
+var multiChoice = [];
+
 class Questions extends Component {
     state = {
         question: null,
@@ -35,6 +38,9 @@ class Questions extends Component {
     // Provides state category and difficulty as parameters
     async fetchData() {
         let data = await fetchQuestion(this.props.category, this.props.difficulty);
+
+        // Empty multiple choice array
+        multiChoice = [];
         this.setState({
             question: data,
         })
@@ -47,19 +53,37 @@ class Questions extends Component {
             return <Spinner />;
         }
 
+        // If the question is a multiple choice
+        // Store answers into an array then shuffle array
+        if (this.state.question.type==="multiple") {
+
+            // Loops through each incorrect answer and pushes into array
+            this.state.question.incorrect_answers.map((ans) => (multiChoice.push(ans)));
+
+            // Push correct answer into array then shuffle array
+            multiChoice.push(this.state.question.correct_answer);
+            multiChoice.sort(() => { return 0.5 - Math.random() })
+        }
+
         return (
             <Card style={cardStyle}>
                 <Container>
-                    <Row style={{height: "150px"}}>
+                    <Row style={{height: "180px"}}>
                         {/* Row one, the question */}
                         <Col><Text>{this.state.question.question}</Text></Col>
                     </Row>
 
-                    <Row style={{height: "150px"}}>
+                    <Row style={{height: "120px"}}>
+
                         {/* Row two, if question type is boolean */}
                         {/* Display true/false, otherwise display choices */}
                         {this.state.question.type==="boolean" ? 
-                        (<Text>True or False?</Text>) : null}
+                        (<Text>True or False?</Text>) : 
+                        
+                        (multiChoice.map((ans, i) => (<Col key={i} xs={6}><Text size="1.3rem"> {ans}</Text></Col>)))}
+                        {/* Loop through each answer choice in multiple choice array */}
+                        {/* Display in two column layout */}
+
                     </Row>
 
                     <Row>
