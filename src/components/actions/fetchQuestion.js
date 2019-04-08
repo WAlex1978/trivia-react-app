@@ -4,9 +4,11 @@ async function fetchQuestion(category, difficulty) {
     try {
 
         // Fetch trivia question from API
-        // If category is null then fetch any
+        // If category is null then fetch any category
+        // If difficulty is null then fetch any difficulty
         let question = await axios.get("https://opentdb.com/api.php?amount=1" +
-        (category===null ? '' : ("category=" + category)) + "&difficulty=" + difficulty);
+            (category === null ? '' : ("&category=" + category)) + 
+            (difficulty === null ? '' : ("&difficulty=" + difficulty)));
 
         // If trivia question could not be fetched
         // Throw error with response code

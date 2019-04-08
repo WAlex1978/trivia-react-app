@@ -25,7 +25,6 @@ class SelectCategory extends Component {
   render() { 
     return (
       <Fragment>
-        Category:
 
         {/* Form Select Box, loops through state categories for options */}
         {/* Calls selectCategory on change, provides option id as parameter */}

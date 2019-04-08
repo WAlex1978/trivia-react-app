@@ -19,15 +19,16 @@ class SelectDifficulty extends Component {
   render() { 
     return (
       <Fragment>
-        Difficulty:
 
         {/* Calls selectDifficulty on change */}
         {/* provides selected difficulty as parameter */}
+        {/* Any Difficulty returns null */}
 
         <FormSelect onChange={this.selectDifficulty}>
-            <option value={'easy'}>Easy</option>
-            <option value={'medium'}>Medium</option>
-            <option value={'hard'}>Hard</option>
+          <option value={null}>Any Difficulty</option>
+          <option value={'easy'}>Easy</option>
+          <option value={'medium'}>Medium</option>
+          <option value={'hard'}>Hard</option>
         </FormSelect>
 
       </Fragment>
