@@ -19,7 +19,7 @@ async function fetchQuestion(category, difficulty) {
         // If trivia question has been fetched
         // Parse data and replace 
         question = JSON.stringify(question.data.results[0]);
-        question = JSON.parse(question.replace(/&quot;/g,"'").replace(/&#039;/g,"'"));
+        question = JSON.parse(question.replace(/&quot;/g,"'").replace(/&#039;/g,"'").replace(/&amp;/g,"&"));
         return question;
     }
 
